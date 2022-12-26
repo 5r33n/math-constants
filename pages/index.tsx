@@ -20,15 +20,49 @@ const colors = [
   "white",
 ]
 
+const pi = "14159265358979323846"
+
 export default function Home() {
   React.useEffect(() => {
-    const c = document.getElementById("my-canvas")
-    const ctx = c.getContext("2d")
+    const canvas = document.getElementById("canvas")
+    const ctx = canvas.getContext("2d")
+    const r = 50
+    /*for (let i = 0; i < pi.length; i++) {
+      
+      }*/
+
+    ctx.lineWidth = 5
+
     ctx.beginPath()
-    ctx.moveTo(0, 0)
-    ctx.lineTo(300, 150)
+    ctx.moveTo(500, 500)
+    ctx.lineTo(547.55, 484.55) // (+47.55, -15.45)
+    ctx.moveTo(500, 500)
+    ctx.lineTo(484.55, 547.55) // (-15.45, +47.55)
+    ctx.moveTo(500, 500)
+    ctx.lineTo(547.55, 515.45) // (+47.55, +15.45)
+    ctx.moveTo(500, 500)
+    ctx.lineTo(529.39, 459.55) // (+29.39, -40.45)
+
+    //ctx.lineTo(500 + r * Math.cos(0.2 * Math.PI), 500 + r * Math.sin(0.2 * Math.PI))
+    ctx.strokeStyle = "#824302"
+    ctx.stroke()
+
+    /*ctx.beginPath()
+    ctx.moveTo(0, 50)
+    ctx.lineTo(50, 50)
+    ctx.strokeStyle = "#473922"
+    ctx.stroke()*/
+
+    ctx.beginPath()
+    ctx.moveTo(95, 25)
+    ctx.lineTo(150, 80)
+    ctx.lineTo(205, 25)
+    ctx.lineTo(210, 130)
+    ctx.strokeStyle = "#fd4302"
+    ctx.lineWidth = 10
     ctx.stroke()
   }, [])
+
   return (
     <>
       <Head>
@@ -38,7 +72,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <canvas id="my-canvas" width="300" height="150"></canvas>
+        <canvas id="canvas" width="1000" height="1000"></canvas>
       </main>
     </>
   )
