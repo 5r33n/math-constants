@@ -22,45 +22,76 @@ const colors = [
 
 const pi = "14159265358979323846"
 
+const getCosSin = (_deg): number[] => {
+  const r = 50
+  const rCos = r * Math.cos((_deg * Math.PI) / 180)
+  const rSin = r * Math.sin((_deg * Math.PI) / 180)
+  return [rCos, rSin]
+}
+
+const drawLine = (_ctx, _num, _x1, _y1): number[] => {
+  _ctx.beginPath()
+  _ctx.moveTo(_x1, _y1)
+  const r = 50
+  let newPos
+  if (_num == 0) {
+    newPos = [_x1, _y1 - getCosSin(90)[1]]
+    _ctx.lineTo(newPos[0], newPos[1])
+  } else if (_num == 1) {
+    const cosSin = getCosSin(54)
+    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+    _ctx.lineTo(newPos[0], newPos[1])
+  } else if (_num == 2) {
+    const cosSin = getCosSin(18)
+    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+    _ctx.lineTo(newPos[0], newPos[1])
+  } else if (_num == 3) {
+    const cosSin = getCosSin(342)
+    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+    _ctx.lineTo(newPos[0], newPos[1])
+  } else if (_num == 4) {
+    const cosSin = getCosSin(306)
+    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+    _ctx.lineTo(newPos[0], newPos[1])
+  } else if (_num == 5) {
+    const cosSin = getCosSin(270)
+    newPos = [_x1, _y1 - cosSin[1]]
+    _ctx.lineTo(newPos[0], newPos[1])
+  } else if (_num == 6) {
+    const cosSin = getCosSin(234)
+    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+    _ctx.lineTo(newPos[0], newPos[1])
+  } else if (_num == 7) {
+    const cosSin = getCosSin(198)
+    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+    _ctx.lineTo(newPos[0], newPos[1])
+  } else if (_num == 8) {
+    const cosSin = getCosSin(162)
+    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+    _ctx.lineTo(newPos[0], newPos[1])
+  } else if (_num == 9) {
+    const cosSin = getCosSin(126)
+    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+    _ctx.lineTo(newPos[0], newPos[1])
+  }
+
+  _ctx.stroke()
+  return newPos
+}
+
 export default function Home() {
   React.useEffect(() => {
     const canvas = document.getElementById("canvas")
     const ctx = canvas.getContext("2d")
-    const r = 50
     /*for (let i = 0; i < pi.length; i++) {
       
       }*/
 
     ctx.lineWidth = 5
-
-    ctx.beginPath()
-    ctx.moveTo(500, 500)
-    ctx.lineTo(547.55, 484.55) // (+47.55, -15.45)
-    ctx.moveTo(500, 500)
-    ctx.lineTo(484.55, 547.55) // (-15.45, +47.55)
-    ctx.moveTo(500, 500)
-    ctx.lineTo(547.55, 515.45) // (+47.55, +15.45)
-    ctx.moveTo(500, 500)
-    ctx.lineTo(529.39, 459.55) // (+29.39, -40.45)
-
-    //ctx.lineTo(500 + r * Math.cos(0.2 * Math.PI), 500 + r * Math.sin(0.2 * Math.PI))
-    ctx.strokeStyle = "#824302"
-    ctx.stroke()
-
-    /*ctx.beginPath()
-    ctx.moveTo(0, 50)
-    ctx.lineTo(50, 50)
-    ctx.strokeStyle = "#473922"
-    ctx.stroke()*/
-
-    ctx.beginPath()
-    ctx.moveTo(95, 25)
-    ctx.lineTo(150, 80)
-    ctx.lineTo(205, 25)
-    ctx.lineTo(210, 130)
-    ctx.strokeStyle = "#fd4302"
-    ctx.lineWidth = 10
-    ctx.stroke()
+    let newPos = [500, 500]
+    for (let i = 0; i < 10; i++) {
+      newPos = drawLine(ctx, i, newPos[0], newPos[1])
+    }
   }, [])
 
   return (
