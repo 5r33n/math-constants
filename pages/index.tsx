@@ -3,25 +3,33 @@ import Image from "next/image"
 import { Inter } from "@next/font/google"
 import styles from "../styles/Home.module.css"
 import React from "react"
+import { pi } from "../constants/nums.ts"
 
 const inter = Inter({ subsets: ["latin"] })
 
 const colors = [
-  "black",
-  "red",
-  "orange",
-  "yellow",
-  "chartreuse",
-  "green",
-  "cyan",
-  "blue",
-  "indigo",
-  "violet",
-  "white",
+  "#EBAA08",
+  "#EE9C0C",
+  "#EA7C1A",
+  "#E7511F",
+  "#DF2E28",
+  "#D91835",
+  "#CE0043",
+  "#BA0353",
+  "#AA0A62",
+  "#AD0962",
+  "#9C2074",
+  "#8A2B85",
+  "#763E95",
+  "#584EA4",
+  "#4560A3",
+  "#2D7699",
+  "#1B898A",
+  "#209976",
+  "#2CA764",
+  "#5CB05B",
+  "#7EB851",
 ]
-
-const pi =
-  "14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726024914127372458700660631558817488152092096282925409171536436789259036001133053054882046652138414695194151160943305727036575959195309218611738193261179310511854807446237996274956735188575272489122793818301194912983367336244065664308602139494639522473719070217986094370277053921717629317675238467481846766940513200056812714526356082778577134275778960917363717872146844090122495343014654958537105079227968925892354201995611212902196086403441815981362977477130996051870721134999999837297804995105973173281609631859502445945534690830264252230825334468503526193118817101000313783875288658753320838142061717766914730359825349042875546873115956286388235378759375195778185778053217122680661300192787661119590921642019893809525720106548586327886593615338182796823030195203530185296899577362259941389124972177528347913151557485724245415069595082953311686172785588907509838175463746493931925506040092770167"
 
 const getCosSin = (_deg): number[] => {
   const r = 50
@@ -30,7 +38,9 @@ const getCosSin = (_deg): number[] => {
   return [rCos, rSin]
 }
 
-const drawLine = (_ctx, _num, _x1, _y1): number[] => {
+let colorNum = 0
+
+const drawLine = (_i, _ctx, _num, _x1, _y1): number[] => {
   _ctx.beginPath()
   _ctx.moveTo(_x1, _y1)
   const r = 50
@@ -76,8 +86,18 @@ const drawLine = (_ctx, _num, _x1, _y1): number[] => {
     _ctx.lineTo(newPos[0], newPos[1])
   }
 
+  _i % 50 == 0 && colorNum++
+  console.log(colors[colorNum])
+  _ctx.strokeStyle = colors[colorNum]
   _ctx.stroke()
   return newPos
+}
+
+const drawCircle = (_ctx, _x, _y, _radius, _start) => {
+  _ctx.beginPath()
+  _ctx.arc(_x, _y, _radius, 0, 2 * Math.PI, false)
+  _start ? (_ctx.strokeStyle = colors[0]) : (_ctx.strokeStyle = colors[19])
+  _ctx.stroke()
 }
 
 export default function Home() {
@@ -85,15 +105,17 @@ export default function Home() {
     const canvas = document.getElementById("canvas")
     const ctx = canvas.getContext("2d")
 
-    // background coloring
     ctx.fillStyle = "white"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
-
     ctx.lineWidth = 2
-    let newPos = [400, 2500]
-    for (let i = 0; i < 1000; i++) {
-      newPos = drawLine(ctx, pi[i], newPos[0], newPos[1])
+
+    let newPos = pi[1] // pi
+    drawCircle(ctx, newPos[0], newPos[1], 5, true)
+
+    for (let i = 0; i < 1420; i++) {
+      newPos = drawLine(i, ctx, pi[0][i], newPos[0], newPos[1])
     }
+    drawCircle(ctx, newPos[0], newPos[1], 5, false)
   }, [])
 
   return (
