@@ -3,7 +3,7 @@ import Image from "next/image"
 import { Inter } from "@next/font/google"
 import styles from "../styles/Home.module.css"
 import React from "react"
-import { pi } from "../constants/nums.ts"
+import { logCapacityOfUnitDisk } from "../constants/nums.ts"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -87,7 +87,6 @@ const drawLine = (_i, _ctx, _num, _x1, _y1): number[] => {
   }
 
   _i % 50 == 0 && colorNum++
-  console.log(colors[colorNum])
   _ctx.strokeStyle = colors[colorNum]
   _ctx.stroke()
   return newPos
@@ -109,12 +108,13 @@ export default function Home() {
     ctx.fillRect(0, 0, canvas.width, canvas.height)
     ctx.lineWidth = 2
 
-    let newPos = pi[1] // pi
+    let newPos = logCapacityOfUnitDisk[1]
     drawCircle(ctx, newPos[0], newPos[1], 5, true)
 
     for (let i = 0; i < 1420; i++) {
-      newPos = drawLine(i, ctx, pi[0][i], newPos[0], newPos[1])
+      newPos = drawLine(i, ctx, logCapacityOfUnitDisk[0][i], newPos[0], newPos[1])
     }
+
     drawCircle(ctx, newPos[0], newPos[1], 5, false)
   }, [])
 
@@ -127,7 +127,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <canvas id="canvas" width="3000" height="3000"></canvas>
+        <canvas id="canvas" width="4200" height="4200"></canvas>
       </main>
     </>
   )
