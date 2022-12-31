@@ -358,7 +358,7 @@ const logCapacityOfUnitDisk = [
   [2500, 1500],
 ]
 
-export {
+export const csts = [
   pi,
   sqrtTwo,
   sqrtThree,
@@ -431,4 +431,4 @@ export {
   somosQuadRecurrCst,
   foiasCst,
   logCapacityOfUnitDisk,
-}
+]
