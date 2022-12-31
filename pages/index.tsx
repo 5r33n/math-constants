@@ -3,7 +3,9 @@ import Image from "next/image"
 import { Inter } from "@next/font/google"
 import styles from "../styles/Home.module.css"
 import React from "react"
-import { logCapacityOfUnitDisk } from "../constants/nums.ts"
+import * as cstsFromFile from "../constants/nums.ts"
+
+const csts = Object.values(cstsFromFile)
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -86,7 +88,7 @@ const drawLine = (_i, _ctx, _num, _x1, _y1): number[] => {
     _ctx.lineTo(newPos[0], newPos[1])
   }
 
-  _i % 50 == 0 && colorNum++
+  _i % 50 == 0 && colorNum < 22 && colorNum++
   _ctx.strokeStyle = colors[colorNum]
   _ctx.stroke()
   return newPos
@@ -104,18 +106,29 @@ export default function Home() {
     const canvas = document.getElementById("canvas")
     const ctx = canvas.getContext("2d")
 
-    ctx.fillStyle = "white"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    //ctx.fillStyle = "whites"
+    //ctx.fillRect(0, 0, canvas.width, canvas.height)
     ctx.lineWidth = 2
+    const link = document.getElementById("link")
+    for (let j = 0; j < csts.length; j++) {
+      colorNum = 0
+      let newPos = csts[j][1]
+      drawCircle(ctx, newPos[0], newPos[1], 5, true)
 
-    let newPos = logCapacityOfUnitDisk[1]
-    drawCircle(ctx, newPos[0], newPos[1], 5, true)
+      for (let i = 0; i < 1420; i++) {
+        newPos = drawLine(i, ctx, csts[j][0][i], newPos[0], newPos[1])
+      }
 
-    for (let i = 0; i < 1420; i++) {
-      newPos = drawLine(i, ctx, logCapacityOfUnitDisk[0][i], newPos[0], newPos[1])
+      drawCircle(ctx, newPos[0], newPos[1], 5, false)
+
+      link.setAttribute("download", j + ".png")
+      link.setAttribute(
+        "href",
+        canvas.toDataURL("image/png").replace("image/png", "image/octet-stream")
+      )
+      link.click()
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
     }
-
-    drawCircle(ctx, newPos[0], newPos[1], 5, false)
   }, [])
 
   return (
@@ -128,6 +141,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <canvas id="canvas" width="4200" height="4200"></canvas>
+        <a id="link"></a>
       </main>
     </>
   )
