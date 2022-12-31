@@ -3,9 +3,7 @@ import Image from "next/image"
 import { Inter } from "@next/font/google"
 import styles from "../styles/Home.module.css"
 import React from "react"
-import * as cstsFromFile from "../constants/nums.ts"
-
-const csts = Object.values(cstsFromFile)
+import { csts } from "../constants/nums.ts"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -110,13 +108,13 @@ export default function Home() {
     //ctx.fillRect(0, 0, canvas.width, canvas.height)
     ctx.lineWidth = 2
     const link = document.getElementById("link")
-    for (let j = 0; j < csts.length; j++) {
+    for (let j = 0; j < 1; j++) {
       colorNum = 0
-      let newPos = csts[j][1]
+      let newPos = csts[53][1]
       drawCircle(ctx, newPos[0], newPos[1], 5, true)
 
       for (let i = 0; i < 1420; i++) {
-        newPos = drawLine(i, ctx, csts[j][0][i], newPos[0], newPos[1])
+        newPos = drawLine(i, ctx, csts[53][0][i], newPos[0], newPos[1])
       }
 
       drawCircle(ctx, newPos[0], newPos[1], 5, false)
@@ -140,7 +138,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <canvas id="canvas" width="4200" height="4200"></canvas>
+        <canvas id="canvas" width="4200" height="6200"></canvas>
         <a id="link"></a>
       </main>
     </>
