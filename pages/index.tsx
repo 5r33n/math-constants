@@ -45,45 +45,56 @@ const drawLine = (_i, _ctx, _num, _x1, _y1): number[] => {
   _ctx.moveTo(_x1, _y1)
   const r = 50
   let newPos
-  if (_num == 0) {
-    newPos = [_x1, _y1 - getCosSin(90)[1]]
-    _ctx.lineTo(newPos[0], newPos[1])
-  } else if (_num == 1) {
-    const cosSin = getCosSin(54)
-    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
-    _ctx.lineTo(newPos[0], newPos[1])
-  } else if (_num == 2) {
-    const cosSin = getCosSin(18)
-    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
-    _ctx.lineTo(newPos[0], newPos[1])
-  } else if (_num == 3) {
-    const cosSin = getCosSin(342)
-    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
-    _ctx.lineTo(newPos[0], newPos[1])
-  } else if (_num == 4) {
-    const cosSin = getCosSin(306)
-    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
-    _ctx.lineTo(newPos[0], newPos[1])
-  } else if (_num == 5) {
-    const cosSin = getCosSin(270)
-    newPos = [_x1, _y1 - cosSin[1]]
-    _ctx.lineTo(newPos[0], newPos[1])
-  } else if (_num == 6) {
-    const cosSin = getCosSin(234)
-    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
-    _ctx.lineTo(newPos[0], newPos[1])
-  } else if (_num == 7) {
-    const cosSin = getCosSin(198)
-    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
-    _ctx.lineTo(newPos[0], newPos[1])
-  } else if (_num == 8) {
-    const cosSin = getCosSin(162)
-    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
-    _ctx.lineTo(newPos[0], newPos[1])
-  } else if (_num == 9) {
-    const cosSin = getCosSin(126)
-    newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
-    _ctx.lineTo(newPos[0], newPos[1])
+  switch (_num) {
+    case 0:
+      newPos = [_x1, _y1 - getCosSin(90)[1]]
+      _ctx.lineTo(newPos[0], newPos[1])
+      break
+    case 1:
+      const cosSin = getCosSin(54)
+      newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+      _ctx.lineTo(newPos[0], newPos[1])
+      break
+    case 2:
+      const cosSin = getCosSin(18)
+      newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+      _ctx.lineTo(newPos[0], newPos[1])
+      break
+    case 3:
+      const cosSin = getCosSin(342)
+      newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+      _ctx.lineTo(newPos[0], newPos[1])
+      break
+    case 4:
+      const cosSin = getCosSin(306)
+      newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+      _ctx.lineTo(newPos[0], newPos[1])
+      break
+    case 5:
+      const cosSin = getCosSin(270)
+      newPos = [_x1, _y1 - cosSin[1]]
+      _ctx.lineTo(newPos[0], newPos[1])
+      break
+    case 6:
+      const cosSin = getCosSin(234)
+      newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+      _ctx.lineTo(newPos[0], newPos[1])
+      break
+    case 7:
+      const cosSin = getCosSin(198)
+      newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+      _ctx.lineTo(newPos[0], newPos[1])
+      break
+    case 8:
+      const cosSin = getCosSin(162)
+      newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+      _ctx.lineTo(newPos[0], newPos[1])
+      break
+    case 9:
+      const cosSin = getCosSin(126)
+      newPos = [_x1 + cosSin[0], _y1 - cosSin[1]]
+      _ctx.lineTo(newPos[0], newPos[1])
+      break
   }
 
   _i % 50 == 0 && colorNum < 22 && colorNum++
