@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Kaos Klub
+![fjkasd](https://user-images.githubusercontent.com/107322691/210419267-e1f3bde1-4d5a-414c-9325-c258f082902b.png)
 
-## Getting Started
+[Kaos Klub](https://opensea.io/collection/kaos-klub) is a collection of 70 [mathematical constants](https://en.wikipedia.org/wiki/Mathematical_constant) as NFTs. In each case, 1420 digits are calculated and drawn to show the chaos these numbers possess, artistically. 
 
-First, run the development server:
+## Explaining w/ Example
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+![banner-img](https://user-images.githubusercontent.com/107322691/210547946-0e8bc417-04a8-46af-a9af-ab81d8156edb.gif)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In this example we've got `x.041530341530415`.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Starting at the first digit right after the decimal point we've got 0 which means we have to go upwards, as shown at the left-hand side of the gif above. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+The color is yellow because we're at the very first digit. As we approach the last digits the color of the lines will change from yellow to green as shown at the bottom of the gif.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+For this example we end at 5 which is a downwards line. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The beginnings and endings have a circle so that you can walk through the lines.
 
-## Learn More
+The same goes for all NFTs: for $\pi$ we have `3.14159...` which means you start at 1, going north-east, and then south-east for 4, and so on.
 
-To learn more about Next.js, take a look at the following resources:
+## Irrationality
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All these constants are irrational, which means none of the digits repeat with a pattern, hence acting chaotic. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
